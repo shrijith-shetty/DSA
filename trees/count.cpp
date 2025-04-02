@@ -8,9 +8,10 @@ class Tree{
     Tree* lchild;
     Tree* rchild;
 
-    Tree(int x) : value(x) , lchild(NULL), rchild(NULL) {};
+    Tree(int x) : value(x) , lchild(NULL), rchild(NULL) {}; // Constructer to create a tree;
 };
 
+// To calculate the number of node
 int count(Tree* root)
 {
     int x, y;
@@ -23,9 +24,9 @@ int count(Tree* root)
     return 0;
 }
 
+//counting the node which has two child 
 int count_(Tree* root)
 {
-    //counting the node which has two child 
     int x, y;
     if(root!=NULL)
     {
@@ -39,6 +40,7 @@ int count_(Tree* root)
     return 0;
 }
 
+// To calculate the sum of all the value in the tree
 int total_value(Tree* root)
 {
     int x=0,y=0;
@@ -47,6 +49,25 @@ int total_value(Tree* root)
         x = total_value(root->lchild);
         y = total_value(root->rchild);
         return x+y+root->value;
+    }
+    return 0;
+}
+
+// to calculate height of the tree
+int fun(Tree* root)
+{
+    int x=0,y=0;
+    if(root!=NULL)
+    {
+        x = fun(root->lchild);
+        y = fun(root->rchild);
+        if(x>y)
+        {
+            return x+1;
+        }
+        else{
+            return 1+y;
+        }
     }
     return 0;
 }
@@ -68,6 +89,8 @@ int main()
     cout<<count_(root)<<"\n";
     cout<<" Sum of all values : ";
     cout<<total_value(root)<<"\n";
+    cout<<" Sum of all values : ";
+    cout<<fun(root)<<"\n";
 
 
 }
