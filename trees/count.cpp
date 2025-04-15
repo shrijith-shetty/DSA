@@ -72,6 +72,45 @@ int fun(Tree* root)
     return 0;
 }
 
+// to calculate leaf node of tree
+int leaf(Tree* root)
+{
+    int x=0,y=0;
+    if(root!=NULL)
+    {
+        x = fun(root->lchild);
+        y = fun(root->rchild);
+        if(root->lchild && root->rchild)
+        {
+            return x+y+1;
+        }
+        else{
+            return x+y;
+        }
+    }
+    return 0;
+}
+
+// to calculate the deg of 1 node
+int deg_1(Tree* root)
+{
+    int x=0,y=0;
+    if(root!=NULL)
+    {
+        x = fun(root->lchild);
+        y = fun(root->rchild);
+        // if(root->lchild ^ root->rchild)
+        if ((root->lchild == nullptr) != (root->rchild == nullptr))
+        {
+            return x+y+1;
+        }
+        else{
+            return x+y;
+        }
+    }
+    return 0;
+}
+
 int main()
 {
     Tree* root = new Tree(1);
@@ -91,6 +130,10 @@ int main()
     cout<<total_value(root)<<"\n";
     cout<<" Sum of all values : ";
     cout<<fun(root)<<"\n";
+    cout<<" Total number of leaf : ";
+    cout<<leaf(root)<<"\n";
+    cout<<" Total number of deg_1 : ";
+    cout<<deg_1(root)<<"\n";
 
 
 }
